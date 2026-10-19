@@ -7,6 +7,7 @@ import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";
 import SignInPage from "../pages/auth/SignInPage";
 import SignUpPage from "../pages/auth/SignUpPage";
+import Dashboard from "../pages/Dashboard";
 
 // React-Toastify
 import { ToastContainer } from "react-toastify";
@@ -20,6 +21,10 @@ const routes = [
     {
         routePath: "/signup",
         routeElement: <SignUpPage />
+    },
+    {
+        routePath: "/dashboard",
+        routeElement: <Dashboard />
     }
 ];
 

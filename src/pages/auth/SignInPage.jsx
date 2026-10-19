@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// React-Router
+import { useNavigate } from 'react-router-dom';
+
 // Vena-DB
 import vena_db from "../../config/supabaseClient";
 
@@ -9,6 +12,8 @@ import toastifyOptions from '../../mocks/toastifyOptions';
 
 
 const SignInPage = () => {
+
+    const navigate = useNavigate();
 
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
@@ -42,6 +47,7 @@ const SignInPage = () => {
         if (data) {
             setMessage("You are now signed in!");
             toast.success("You are now signed in!", toastifyOptions.darkTopRight);
+            navigate("/dashboard");
         }
 
         setEmailInput("");
