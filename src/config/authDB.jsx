@@ -15,9 +15,9 @@ const getSession = async (setIsAuthenticated, setUserSession, setIsSessionLoadin
     // userSettingsDB.checkIfUserExist(session);
     // userSettingsDB.fetchUserData(session, setLoggedUserData);
     if (session) {
-        // 1. Wait until we verify the user exists (or finishes inserting)
+        // Wait until we verify the user exists (or finishes inserting)
         await userSettingsDB.checkIfUserExist(session);
-        // 2. Now safely fetch the user data
+        // Now safely fetch the user data
         await userSettingsDB.fetchUserData(session, setLoggedUserData);
     }
     
