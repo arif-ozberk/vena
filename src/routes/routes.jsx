@@ -15,7 +15,7 @@ import { ToastContainer } from "react-toastify";
 
 const routes = [
     {
-        routePath: "/login",
+        routePath: "/signin",
         routeElement: <SignInPage />
     },
     {

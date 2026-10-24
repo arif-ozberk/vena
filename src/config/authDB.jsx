@@ -26,32 +26,45 @@ const getSession = async (setIsAuthenticated, setUserSession, setIsSessionLoadin
 
 
 // Function to check if user is logged in
-const checkSession = async (setIsLoggedIn, setUsername) => {
-    const {
-        data: { session }
-    } = await vena_db.auth.getSession();
+const checkSession = async (setIsLoggedIn, setUsername, setIsLoading) => {
+    try {
+        const {
+            data: { session }
+        } = await vena_db.auth.getSession();
 
-    if (session) {
-        const { data, error } = await vena_db
-            .from("user_settings")
-            .select("username")
-            .eq("user_id", session.user.id)
-            .single()
+        if (session) {
+            const { data, error } = await vena_db
+                .from("user_settings")
+                .select("username")
+                .eq("user_id", session.user.id)
+                .single()
 
-        if (error) {
-            console.log(error);
-            return;
+            if (error) {
+                console.log(error);
+                return;
+            }
+
+            if (data) {
+                setIsLoggedIn(true);
+                setUsername(data.username);
+            }
         }
 
-        if (data) {
-            setIsLoggedIn(true);
-            setUsername(data.username);
+        else {
+            setIsLoggedIn(false);
+            setUsername(null);
         }
     }
-
-    else {
+    
+    catch (err) {
+        console.error("Session check error:", err);
         setIsLoggedIn(false);
         setUsername(null);
+    }
+        
+    finally {
+        // Ensures loading state ends regardless of outcome
+        if (setIsLoading) setIsLoading(false);
     }
 };
 

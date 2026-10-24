@@ -1,0 +1,353 @@
+@use "../globals.scss" as *;
+
+
+
+.authPage {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    // padding: 1rem;
+    background: url("../../assets/red-liquid-marble-img.jpg");
+    background-position: center;
+    background-size: cover;
+
+
+    .leftContainer {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+        background-color: $dark-main;
+        // border-top-right-radius: $border-rad-xxl;
+        border-bottom-right-radius: $border-rad-xxl;
+
+        @media(max-width: 1024px) {
+            border-radius: 0;
+        }
+
+        @media(max-width: 425px) {
+            padding: 1.2rem 0;
+        }
+
+        .venaLogo {
+            @include flex-center;
+            // flex-direction: column;
+            cursor: pointer;
+            row-gap: 0.3rem;
+            transition: transform 0.2s ease;
+
+            img {
+                height: 2rem;
+
+                @media(max-width: 425px) {
+                    height: 1.8rem;
+                }
+            }
+
+            p {
+                font-size: 1.4rem;
+                font-weight: 200;
+                transition: color 0.2s ease;
+
+                @media(max-width: 425px) {
+                    font-size: 1.1rem;
+                }
+            }
+
+            &:hover {
+                transform: translateY(-3px);
+
+                p {
+                    color: $red-dark;
+                }
+            }
+        }
+
+        .authForm {
+            @include flex-center;
+            flex-direction: column;
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 200;
+                line-height: 100%;
+                margin-bottom: 0.5rem;
+
+                @media(max-width: 1440px) {
+                    font-size: 2.8rem;
+                }
+
+                @media(max-width: 1100px) {
+                    font-size: 2.6rem;
+                }
+
+                @media(max-width: 768px) {
+                    font-size: 2.2rem;
+                }
+
+                @media(max-width: 425px) {
+                    font-size: 2rem;
+                }
+
+                @media(max-width: 375px) {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .authInfo {
+                font-size: 0.8rem;
+                font-weight: 200;
+                margin-bottom: 2rem;
+                color: $gray-faded;
+
+                @media(max-width: 768px) {
+                    font-size: 0.65rem;
+                }
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 350px;
+
+                @media(max-width: 1100px) {
+                    width: 320px;
+                }
+
+                @media(max-width: 768px) {
+                    width: 280px;
+                }
+
+                .emailInput {
+                    margin-bottom: 1.5rem;
+                }
+
+                .passwordInput {
+                    margin-bottom: 0.6rem;
+
+                    div {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+
+                        .showPasswordButton {
+                            position: absolute;
+                            right: 1rem;
+                            cursor: pointer;
+                            font-size: 1.2rem;
+                            fill: $gray-main;
+                            transition: fill 0.2s ease;
+
+                            &:hover {
+                                fill: $red-dark;
+                            }
+                        }
+                    }
+                }
+
+                .emailInput,
+                .passwordInput {
+                    display: flex;
+                    flex-direction: column;
+
+                    h4 {
+                        font-size: 1rem;
+                        font-weight: 300;
+                        margin-bottom: 0.2rem;
+
+                        @media(max-width: 1100px) {
+                            font-size: 1rem;
+                        }
+
+                        @media(max-width: 768px) {
+                            font-size: 0.9rem;
+                        }
+                    }
+
+                    input {
+                        color: $dark-main;
+                        height: 2.5rem;
+                        border-radius: $border-rad-xs;
+                        border: none;
+                        padding: 0 0.5rem;
+                        width: 100%;
+
+                        &:focus {
+                            background-color: $gray-faded;
+                            outline: 1px solid $red-main;
+                        }
+                    }
+
+
+                }
+
+                .loginOptions {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.8rem;
+                    font-weight: 300;
+
+                    .forgotPasswordButton {
+                        font-size: 0.8rem;
+                        cursor: pointer;
+                        color: $gray-faded;
+                        transition: color 0.3s ease;
+
+                        &:hover {
+                            color: $red-dark;
+                        }
+                    }
+
+                    div {
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            color: $gray-faded;
+                        }
+
+                        input {
+                            margin-right: 0.4rem;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .submitButton {
+                    height: 2.5rem;
+                    border-radius: $border-rad-xs;
+                    border: none;
+                    background-color: $red-main;
+                    color: $silver-white;
+                    font-size: 0.9rem;
+                    font-weight: 300;
+                    margin: 2rem 0;
+                    transition: background-color 0.3s ease, transform 0.3s ease;
+
+                    &:hover {
+                        background-color: $red-dark;
+                        transform: translateY(-3px);
+                    }
+                }
+
+                .platformDivider {
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 0.8rem;
+                    font-weight: 300;
+                    color: $silver-white;
+                    white-space: nowrap;
+                    margin-bottom: 2rem;
+                    user-select: none;
+
+                    &::before,
+                    &::after {
+                        content: '';
+                        flex: 1;
+                        border-bottom: 1px solid $silver-white; // line color
+                    }
+
+                    &::before {
+                        margin-right: 1rem; // space before text
+                    }
+
+                    &::after {
+                        margin-left: 1rem; // space after text
+                    }
+                }
+            }
+
+            .otherPlatforms {
+                display: flex;
+                align-items: center;
+                column-gap: 1rem;
+
+                svg {
+                    background-color: $dark-light;
+                    font-size: 2rem;
+                    padding: 0.4rem;
+                    border-radius: 0.2rem;
+                    cursor: pointer;
+                    transition: transform 0.2s ease, background-color 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                        background-color: $red-dark;
+                    }
+                }
+            }
+        }
+
+        .authSwitch {
+            display: flex;
+            align-items: center;
+            color: $silver-white;
+            font-weight: 300;
+
+            @media(max-width: 768px) {
+                font-size: 0.8rem;
+            }
+
+            .switchButton {
+                @include flex-center;
+                font-weight: 300;
+                font-size: 0.8rem;
+                background-color: $red-main;
+                color: $silver-white;
+                padding: 0.2rem 0.8rem;
+                border-radius: $border-rad-xxs;
+                margin-left: 0.5rem;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+
+                &:hover {
+                    background-color: $red-dark;
+                    transform: translateY(-2px);
+                }
+
+                @media(max-width: 768px) {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+
+    }
+
+    .rightContainer {
+        // background: url("../../assets/red-liquid-marble-img.jpg");
+        // background-position: center;
+        // background-size: cover;
+        // border-radius: $border-rad-xl;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding: 2rem 3rem;
+        color: transparent;
+
+        @media(max-width: 1024px) {
+            display: none;
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: $silver-white;
+
+            @media(max-width: 1100px) {
+                font-size: 2.8rem;
+            }
+        }
+
+        p {
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
