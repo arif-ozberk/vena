@@ -1,0 +1,193 @@
+@use "../globals.scss" as *;
+
+
+
+.userIconPopup {
+    position: absolute;
+    background-color: $gray-dark;
+    width: 14rem;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+    border-radius: $border-rad-xxs;
+
+    @media(min-width: 769px) {
+        left: 3rem;
+        bottom: 4rem;
+    }
+
+    @media(max-width: 768px) {
+        right: 3.5rem;
+        bottom: 19.5rem;
+    }
+
+    .closePopupButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.8rem !important;
+        cursor: pointer;
+        transition: fill 0.2s ease;
+
+        &:hover {
+            fill: $red-dark;
+        }
+    }
+
+    .usernameText {
+        font-size: 0.8rem;
+        font-weight: 300;
+    }
+
+    .visualSettings {
+        display: flex;
+        column-gap: 0.6rem;
+        width: 100%;
+
+        .colorModeContainer {
+            display: flex;
+            column-gap: 0.4rem;
+            width: 100%;
+
+            .colorMode {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                column-gap: 0.2rem;
+                width: 50%;
+                background-color: $dark-faded;
+                padding: 0.2rem;
+                border-radius: 0.2rem;
+                cursor: pointer;
+                opacity: 0.6;
+                transition: opacity 0.2s ease;
+
+                &:hover {
+                    outline: 1px solid $red-dark;
+                    opacity: 1;
+                }
+
+                svg {
+                    font-size: 1.4rem;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                    font-weight: 300
+                }
+            }
+
+            .selectedColorMode {
+                outline: 1px solid $red-dark;
+                opacity: 1;
+            }
+        }
+
+        .notificationMode {
+            @include flex-center;
+            background-color: $dark-faded;
+            width: 2.1rem;
+            border-radius: 0.2rem;
+            cursor: pointer;
+
+            &:hover {
+                svg {
+                    fill: $red-dark;
+                }
+            }
+
+            svg {
+                font-size: 1.4rem !important;
+                transition: fill 0.2s ease;
+            }
+        }
+    }
+
+    .languageSettings {
+        display: flex;
+        column-gap: 0.6rem;
+
+        .languageOption {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            column-gap: 0.2rem;
+            width: 50%;
+            background-color: $dark-faded;
+            padding: 0.2rem;
+            border-radius: 0.2rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                outline: 1px solid $red-dark;
+                opacity: 1;
+            }
+
+            img {
+                width: 1.6rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+                font-weight: 300;
+            }
+        }
+
+        .selectedLanguage {
+            outline: 1px solid $red-dark;
+            opacity: 1;
+        }
+    }
+
+    .userSettingsLink {
+        display: flex;
+        align-items: center;
+        background-color: $dark-faded;
+        padding: 0.4rem 0.2rem;
+        column-gap: 0.4rem;
+        border-radius: 0.2rem;
+
+        &:hover {
+            outline: 1px solid $red-dark;
+
+            svg {
+                fill: $red-dark;
+            }
+        }
+
+        svg {
+            font-size: 1.4rem !important;
+            transition: fill 0.2s ease;
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
+    }
+
+    .signOutButton {
+        display: flex;
+        align-items: center;
+        background-color: $red-main;
+        padding: 0.4rem 0.2rem;
+        column-gap: 0.4rem;
+        border-radius: 0.2rem;
+        border: none;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: $red-dark;
+        }
+
+        svg {
+            font-size: 1.4rem !important;
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
+    }
+}

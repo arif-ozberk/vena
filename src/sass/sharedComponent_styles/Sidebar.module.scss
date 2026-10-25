@@ -85,9 +85,11 @@
     .userIcon {
         position: absolute;
         bottom: 1.5rem;
-
+        @include flex-center;
+        
         svg {
             font-size: 3rem;
+            cursor: pointer;
         }
     }
 }

@@ -9,11 +9,6 @@ export const navLinks = [
         icon: <BsFillGrid3X3GapFill />,
         path: "/dashboard"
     },
-    // {
-    //     name: "Deneme",
-    //     icon: <IoWallet />,
-    //     path: "/deneme"
-    // },
     {
         name: "Heart",
         icon: <FaHeartbeat />,

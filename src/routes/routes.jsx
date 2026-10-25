@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, Navigate, Outlet } from "react-router-dom";
 
 
@@ -12,9 +12,13 @@ import Heart from "../pages/app/Heart";
 import Google from "../pages/app/Google";
 import Facebook from "../pages/app/Facebook";
 import Github from "../pages/app/Github";
+import UserSettingsPage from "../pages/UserSettingsPage";
 
 // React-Toastify
 import { ToastContainer } from "react-toastify";
+
+// Context
+import { AuthContext } from "../context/AuthContext";
 
 
 const routes = [
@@ -45,16 +49,29 @@ const routes = [
     {
         routePath: "/dashboard/github",
         routeElement: <Github />
+    },
+    {
+        routePath: "/dashboard/user-settings",
+        routeElement: <UserSettingsPage />
     }
 ];
 
 
-const RootLayout = () => (
-    <>
-        <ToastContainer />
-        <Outlet />
-    </>
-);
+const RootLayout = () => {
+
+    const { loggedUserData } = useContext(AuthContext);
+
+    const isNotificationEnabled = loggedUserData
+        ? (loggedUserData?.user_settings?.visual_settings?.notificationSetting ?? true)
+        : true;
+
+    return (
+        <>
+            {isNotificationEnabled && <ToastContainer />}
+            <Outlet />
+        </>
+    )
+};
 
 
 export const router = createBrowserRouter(

@@ -9,15 +9,21 @@ import { RouterProvider } from "react-router-dom";
 
 // Context
 import { AuthContextProvider } from "./context/AuthContext";
+import { UIContextProvider } from "./context/UIContext";
+
+// React-Toastify
+import { ToastContainer } from "react-toastify";
 
 
 const App = () => {
 
 	return (
 		<AuthContextProvider>
-			<div className={`App`}>
-				<RouterProvider router={router} />
-			</div>
+			<UIContextProvider>
+				<div className={`App`}>
+					<RouterProvider router={router} />
+				</div>
+			</UIContextProvider>
 		</AuthContextProvider>
 	);
 }

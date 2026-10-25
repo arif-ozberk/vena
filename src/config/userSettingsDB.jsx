@@ -55,21 +55,28 @@ const fetchUserData = async (userSession, setLoggedUserData) => {
 
 
 // Update existing users data with new user input
-const updateUserData = async (userSession, userInputChanges) => {
+const updateUserData = async (userSession, userInputChanges, setLoggedUserData) => {
 
     const { data, error } = await vena_db
         .from("user_settings")
         .update(userInputChanges)
         .select()
         .eq("user_id", userSession?.user.id)
+        .single();
 
     if (error) {
         console.log(error);
         return;
     }
 
-    if (data) {
-        location.reload();
+    if (data && setLoggedUserData) {
+        setLoggedUserData((prev) => ({
+            ...prev,
+            user_settings: {
+                ...prev?.user_settings,
+                ...data
+            }
+        }));
     }
 }
 

@@ -15,7 +15,7 @@
     padding: 0 1rem;
     border-top-right-radius: $border-rad-lg;
     border-top-left-radius: $border-rad-lg;
-    overflow: hidden;
+    box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.75);
 
     transform: translateY(0);
     transition: transform 0.4s ease;
@@ -64,7 +64,12 @@
         }
 
         .userIcon {
-            font-size: 2.4rem;
+            @include flex-center;
+
+            svg {
+                font-size: 2.4rem;
+                cursor: pointer;
+            }
         }
     }
 

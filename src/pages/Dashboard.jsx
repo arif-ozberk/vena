@@ -48,6 +48,7 @@ const Dashboard = () => {
                 <p>sada</p>
                 <p>sajdas</p>
                 <p>sjadjasd</p>
+                <button onClick={() => {toast.error("error", toastifyOptions.darkTopRight)}}>click me</button>
             </div>
         </AuthWrapper>
     );

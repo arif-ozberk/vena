@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 // Styles
 import styles from "../../sass/sharedComponent_styles/Sidebar.module.scss";
+
+// Components
+import UserIconPopup from './UserIconPopup';
 
 // Assets
 import venaLogo from "../../assets/vena-logo.png";
@@ -10,13 +13,18 @@ import venaLogo from "../../assets/vena-logo.png";
 import { navLinks } from '../../routes/navLinks';
 
 // React-Icons
-import { FaHeartbeat, FaFacebook, FaGoogle, FaGithub, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+
 
 // React-Router
 import { Link } from 'react-router-dom';
 
 
 const Sidebar = () => {
+
+    const popupRef = useRef(null);
+
+    const [isUserIconPopupOpen, setIsUserIconPopupOpen] = useState(false);
 
 
     return (
@@ -48,8 +56,21 @@ const Sidebar = () => {
                 ))}
             </div>
 
-            <div className={styles.userIcon}>
+            <div
+                className={styles.userIcon}
+                onClick={(e) => {
+                    if (popupRef.current && popupRef.current.contains(e.target)) return;
+                    setIsUserIconPopupOpen(prev => !prev);
+                }}
+            >
                 <FaUserCircle />
+                {isUserIconPopupOpen &&
+                    <UserIconPopup
+                        popupRef={popupRef}
+                        isUserIconPopupOpen={isUserIconPopupOpen}
+                        setIsUserIconPopupOpen={setIsUserIconPopupOpen} 
+                    />
+                }
             </div>
         </div>
     );

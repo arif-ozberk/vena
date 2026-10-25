@@ -3,9 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 // Styles
 import styles from "../../sass/sharedComponent_styles/MobileNavbar.module.scss";
 
+// Components
+import UserIconPopup from './UserIconPopup';
+
 // React-Icons
 import { HiMenuAlt2 } from "react-icons/hi";
-import { FaHeartbeat, FaFacebook, FaGoogle, FaGithub, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { GoChevronDown } from "react-icons/go";
 
 // Assets
@@ -21,8 +24,10 @@ import { navLinks } from '../../routes/navLinks';
 const MobileNavbar = () => {
 
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const [isUserIconPopupOpen, setIsUserIconPopupOpen] = useState(false);
 
     const navbarRef = useRef(null);
+    const popupRef = useRef(null);
 
 
     const handleNavbarButton = () => {
@@ -63,7 +68,20 @@ const MobileNavbar = () => {
                     <img src={venaLogo} alt="vena-logo-img" />
                     <p>Vena</p>
                 </Link>
-                <FaUserCircle className={styles.userIcon} />
+                <div
+                    className={styles.userIcon}
+                    onClick={(e) => {
+                        if (popupRef.current && popupRef.current.contains(e.target)) return;
+                        setIsUserIconPopupOpen(prev => !prev);
+                    }}
+                >
+                    <FaUserCircle />
+                    {isUserIconPopupOpen && <UserIconPopup
+                        popupRef={popupRef}
+                        isUserIconPopupOpen={isUserIconPopupOpen}
+                        setIsUserIconPopupOpen={setIsUserIconPopupOpen}
+                    />}
+                </div>
             </div>
 
             <div className={styles.navbarBottom}>
