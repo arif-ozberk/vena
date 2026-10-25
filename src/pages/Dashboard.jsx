@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 
+// Styles
+import styles from "../sass/dashboardPage_styles/Dashboard.module.scss";
+
 // React-Router
 import { useNavigate } from 'react-router-dom';
 
@@ -38,10 +41,13 @@ const Dashboard = () => {
 
     return (
         <AuthWrapper>
-            <div>
+            <div className={`${styles.dashboardPage} context-wrapper`}>
                 <h1>Dashboard</h1>
                 <p>Hello {loggedUserData?.user_settings?.username}. Welcome to your dashboard.</p>
                 <button onClick={handleSignOutButton}>Sign Out</button>
+                <p>sada</p>
+                <p>sajdas</p>
+                <p>sjadjasd</p>
             </div>
         </AuthWrapper>
     );

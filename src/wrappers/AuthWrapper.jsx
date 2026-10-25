@@ -5,6 +5,8 @@ import { Navigate } from 'react-router-dom';
 import "../sass/globals.scss";
 
 // Components
+import Sidebar from '../components/shared_components/Sidebar';
+import MobileNavbar from '../components/shared_components/MobileNavbar';
 
 // Context
 import { AuthContext } from '../context/AuthContext';
@@ -34,9 +36,11 @@ const AuthWrapper = ({ children }) => {
 
 
     if (isSessionLoading) return (
-        <>
-
-        </>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height:"100vh" }}>
+            <h1>Loading...</h1>
+            <Sidebar />
+            <MobileNavbar />
+        </div>
     );
 
     else {
@@ -45,9 +49,11 @@ const AuthWrapper = ({ children }) => {
         )
 
         if (isAuthenticated) return (
-            <div>
+            <div className={`page-container`}>
                 {/* <PageLoader /> */}
                 {children}
+                <Sidebar />
+                <MobileNavbar />
             </div>
         )
     }

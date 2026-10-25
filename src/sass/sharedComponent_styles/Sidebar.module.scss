@@ -1,0 +1,126 @@
+@use "../globals.scss" as *;
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $dark-faded;
+    height: 100%;
+    width: 5rem;
+    padding: 1.5rem 0;
+    border-bottom-right-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5rem;
+    box-shadow: 2px 0px 8px -4px rgba(0, 0, 0, 0.75);
+    // border-right: 1px solid $red-dark;
+
+    @media(max-width: 768px) {
+        display: none;
+    }
+
+
+    .venaLogo {
+        @include flex-center;
+
+        img {
+            width: 3rem;
+        }
+    }
+
+    .navLinks {
+        @include flex-space-between;
+        flex-direction: column;
+        row-gap: 1.6rem;
+        width: 100%;
+
+        .navLink {
+            position: relative;
+            @include flex-center;
+            padding: 0.5rem;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: $dark-light;
+
+                svg {
+                    fill: $red-dark;
+                }
+
+                .navLinkInfo {
+                    display: flex;
+                }
+            }
+
+            svg {
+                font-size: 1.6rem;
+                fill: $gray-main;
+                transition: fill 0.3s ease;
+            }
+
+            .navLinkInfo {
+                position: absolute;
+                left: 120%;
+                display: none;
+                align-items: center;
+                justify-content: start;
+                background-color: $dark-faded;
+                width: 8rem;
+                padding: 0.5rem 0.4rem;
+                border-radius: $border-rad-xxs;
+                animation: linkInfoFadeIn 0.3s alternate ease;
+
+                p {
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                    color: $silver-white;
+                }
+            }
+        }
+    }
+
+    .userIcon {
+        position: absolute;
+        bottom: 1.5rem;
+
+        svg {
+            font-size: 3rem;
+        }
+    }
+}
+
+.navLinkActive {
+
+    &:hover {
+        background-color: transparent !important;
+    }
+
+    svg {
+        fill: $silver-white !important;
+    }
+
+    .activeIndicator {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 0.4rem;
+        background-color: $silver-white;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+}
+
+@keyframes linkInfoFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

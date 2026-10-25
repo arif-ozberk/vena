@@ -264,6 +264,14 @@ span {
     }
 }
 
+.page-container {
+    padding-left: 5rem;
+
+    @media(max-width: 768px) {
+        padding-left: 0;
+    }
+}
+
 .title-main {
     font-size: 3.5rem;
     font-weight: 600;

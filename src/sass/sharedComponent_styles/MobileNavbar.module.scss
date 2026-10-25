@@ -1,0 +1,120 @@
+@use "../globals.scss" as *;
+
+
+
+.mobileNavbar {
+    position: fixed;
+    background-color: $dark-faded;
+    display: none;
+    bottom: -16rem;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    border-top-right-radius: $border-rad-lg;
+    border-top-left-radius: $border-rad-lg;
+    overflow: hidden;
+
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+
+    @media(max-width: 768px) {
+        display: flex;
+    }
+
+    @media(max-width: 425px) {
+        padding: 0 0.8rem;
+    }
+
+    .navbarTop {
+        height: 4rem;
+        width: 100%;
+        @include flex-space-between;
+
+        .navbarButton {
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: fill 0.2s ease;
+
+            &:hover {
+                fill: $red-dark;
+            }
+        }
+
+        .venaLogo {
+            @include flex-center;
+
+            &:hover {
+                p {
+                    color: $red-dark;
+                }
+            }
+
+            img {
+                height: 2rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+                font-weight: 300;
+                transition: color 0.2s ease;
+            }
+        }
+
+        .userIcon {
+            font-size: 2.4rem;
+        }
+    }
+
+    .navbarBottom {
+        height: 16rem;
+        padding: 1rem 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-top: 1px solid $gray-dark;
+
+        .navLink {
+            display: flex;
+            align-items: center;
+            background-color: $dark-light;
+            border-radius: $border-rad-xxs;
+            column-gap: 1rem;
+            padding: 0.4rem;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: $gray-dark;
+
+                svg {
+                    fill: $red-dark;
+                }
+            }
+
+            svg {
+                font-size: 1.2rem;
+                transition: fill 0.2s ease;
+            }
+
+            p {
+                font-size: 0.9rem;
+                font-weight: 300;
+            }
+        }
+
+        .navLinkActive {
+            background-color: $gray-dark;
+
+            svg {
+                fill: $red-dark;
+            }
+        }
+    }
+}
+
+.navbarOpen {
+    transform: translateY(-16rem);
+}
