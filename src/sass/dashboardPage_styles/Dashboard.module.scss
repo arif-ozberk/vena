@@ -1,1 +1,82 @@
 @use "../globals.scss" as *;
+
+
+
+.dashboardPage {
+    display: flex;
+    flex-direction: column;
+    row-gap: $grid-gap;
+
+
+    .greetingContainer {
+        @include flex-space-between;
+
+        p {
+            font-size: 1rem;
+
+            @media(max-width: 1024px) {
+                font-size: 0.8rem;
+            }
+        }
+
+        svg {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: fill 0.2s ease;
+
+            &:hover {
+                fill: $red-dark;
+            }
+        }
+    }
+
+    .gridSection {
+        background-color: $dark-faded;
+        border-radius: $border-rad-xs;
+        padding: $grid-section-padding;
+        border: 1px solid $red-main;
+    }
+
+    .topContainer {
+        display: flex;
+        gap: $grid-gap;
+
+        @media(max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .div1 {
+            flex: 5;
+        }
+
+        .div2 {
+            flex: 3;
+        }
+    }
+
+    .bottomContainer {
+        display: flex;
+        gap: $grid-gap;
+        flex: 1;
+
+        @media(max-width: 1024px) {
+            flex-direction: column;
+        }
+
+        .div3 {
+            flex: 1;
+
+            @media(max-width: 1024px) {
+                flex: none;
+            }
+        }
+
+        .div4 {
+            flex: 1;
+
+            @media(max-width: 1024px) {
+                flex: none;
+            }
+        }
+    }
+}

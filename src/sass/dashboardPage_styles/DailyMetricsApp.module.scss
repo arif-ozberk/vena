@@ -1,0 +1,93 @@
+@use "../globals.scss" as *;
+
+
+
+.dailyMetricsApp {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+    height: 100%;
+
+    .dailyMetricTitle {
+        font-size: 1rem;
+        font-weight: 400;
+
+        @media(max-width: 1024px) {
+            font-size: 0.9rem;
+        }
+    }
+
+    .dailyMetricGrid {
+        display: flex;
+        flex: 1;
+        column-gap: 0.6rem;
+        height: 100%;
+
+        .leftColumn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            row-gap: 0.6rem;
+        }
+
+        .rightColumn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            row-gap: 0.6rem;
+        }
+
+        .dailyMetricGridSection {
+            background-color: $gray-dark;
+            flex: 1;
+            border-radius: $border-rad-xxs;
+            padding: 0.4rem;
+            display: flex;
+            align-items: center;
+            column-gap: 0.2rem;
+
+            @media(max-width: 768px) {
+                padding: 0.8rem 0.4rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+                font-weight: 300;
+
+                @media(max-width: 1024px) {
+                    font-size: 0.8rem;
+                }
+            }
+
+            span {
+                font-size: 0.9rem;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .noDataWrapper {
+        background-color: $gray-dark;
+        height: 100%;
+        @include flex-center;
+        border-radius: $border-rad-xs;
+        padding: 0.4rem;
+
+        @media(max-width: 768px) {
+            min-height: 10rem;
+        }
+
+        .noDataText {
+            font-size: 1rem;
+            font-weight: 300;
+            line-break: auto;
+            text-align: center;
+
+            @media(max-width: 1024px) {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

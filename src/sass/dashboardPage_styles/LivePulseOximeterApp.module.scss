@@ -1,0 +1,70 @@
+@use "../globals.scss" as *;
+
+
+
+.livePulseOximeterApp {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    .topRow {
+        @include flex-space-between;
+
+        .deviceStatus {
+            font-weight: 300;
+            font-size: 1rem;
+
+            @media(max-width: 1024px) {
+                font-size: 0.8rem;
+            }
+
+            @media(max-width: 375px) {
+                font-size: 0.7rem;
+            }
+
+            strong {
+                font-weight: 500;
+
+                svg {
+                    font-size: 1rem
+                }
+            }
+        }
+
+        .connectDeviceButton {
+            @include flex-center;
+            background-color: transparent;
+            border: 1px solid $red-main;
+            font-size: 1rem;
+            font-weight: 300;
+            padding: 0.4rem 0.8rem;
+            border-radius: $border-rad-xxs;
+            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+            @media(max-width: 1024px) {
+                font-size: 0.8rem;
+            }
+
+            @media(max-width: 400px) {
+                font-size: 0.7rem;
+                padding: 0.4rem;
+            }
+
+            &:hover {
+                background-color: $red-dark;
+                border-color: $red-dark;
+                transform: translateY(-3px);
+            }
+        }
+    }
+
+    .bottomRow {
+        display: flex;
+        align-items: center;
+        height: 10rem;
+        
+        @media(max-width: 1024px) {
+            height: 8rem;
+        }
+    }
+}
