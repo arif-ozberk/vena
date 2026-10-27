@@ -8,11 +8,11 @@ import NotFound from "../pages/NotFound";
 import SignInPage from "../pages/auth/SignInPage";
 import SignUpPage from "../pages/auth/SignUpPage";
 import Dashboard from "../pages/Dashboard";
-import Heart from "../pages/app/Heart";
-import Google from "../pages/app/Google";
-import Facebook from "../pages/app/Facebook";
-import Github from "../pages/app/Github";
 import UserSettingsPage from "../pages/UserSettingsPage";
+import ProjectReportPage from "../pages/app/ProjectReportPage";
+import CalendarAppPage from "../pages/app/CalendarAppPage";
+import ProjectComponentsPage from "../pages/app/ProjectComponentsPage";
+import AboutVenaPage from "../pages/app/AboutVenaPage";
 
 // React-Toastify
 import { ToastContainer } from "react-toastify";
@@ -35,24 +35,24 @@ const routes = [
         routeElement: <Dashboard />
     },
     {
-        routePath: "/dashboard/heart",
-        routeElement: <Heart />
-    },
-    {
-        routePath: "/dashboard/google",
-        routeElement: <Google />
-    },
-    {
-        routePath: "/dashboard/facebook",
-        routeElement: <Facebook />
-    },
-    {
-        routePath: "/dashboard/github",
-        routeElement: <Github />
-    },
-    {
         routePath: "/dashboard/user-settings",
         routeElement: <UserSettingsPage />
+    },
+    {
+        routePath: "/dashboard/project-report",
+        routeElement: <ProjectReportPage />
+    },
+    {
+        routePath: "/dashboard/calendar-app",
+        routeElement: <CalendarAppPage />
+    },
+    {
+        routePath: "/dashboard/project-components",
+        routeElement: <ProjectComponentsPage />
+    },
+    {
+        routePath: "/dashboard/about-vena",
+        routeElement: <AboutVenaPage/>
     }
 ];
 

@@ -1,6 +1,8 @@
 // React-Icons
-import { FaHeartbeat, FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
+import { FaCalendarAlt, FaProjectDiagram } from "react-icons/fa";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { BiSolidReport } from "react-icons/bi";
+import { MdSettingsInputComponent } from "react-icons/md";
 
 
 export const navLinks = [
@@ -10,23 +12,23 @@ export const navLinks = [
         path: "/dashboard"
     },
     {
-        name: "Heart",
-        icon: <FaHeartbeat />,
-        path: "/dashboard/heart"
+        name: "Calendar App",
+        icon: <FaCalendarAlt />,
+        path: "/dashboard/calendar-app"
     },
     {
-        name: "Google",
-        icon: <FaGoogle />,
-        path: "/dashboard/google"
+        name: "Project Report",
+        icon: <BiSolidReport />,
+        path: "/dashboard/project-report"
     },
     {
-        name: "Facebook",
-        icon: <FaFacebook />,
-        path: "/dashboard/facebook"
+        name: "Project Components",
+        icon: <MdSettingsInputComponent />,
+        path: "/dashboard/project-components"
     },
     {
-        name: "Github",
-        icon: <FaGithub />,
-        path: "/dashboard/github"
+        name: "About Vena",
+        icon: <FaProjectDiagram />,
+        path: "/dashboard/about-vena"
     }
 ];

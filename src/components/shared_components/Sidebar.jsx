@@ -41,10 +41,9 @@ const Sidebar = () => {
                         className={`
                             ${styles.navLink}
                             ${location.pathname === "/dashboard" && navLink.path === "/dashboard" && styles.navLinkActive}
-                            ${location.pathname === "/dashboard/heart" && navLink.path === "/dashboard/heart" && styles.navLinkActive}
-                            ${location.pathname === "/dashboard/google" && navLink.path === "/dashboard/google" && styles.navLinkActive}
-                            ${location.pathname === "/dashboard/facebook" && navLink.path === "/dashboard/facebook" && styles.navLinkActive}
-                            ${location.pathname === "/dashboard/github" && navLink.path === "/dashboard/github" && styles.navLinkActive}
+                            ${location.pathname === "/dashboard/project-report" && navLink.path === "/dashboard/project-report" && styles.navLinkActive}
+                            ${location.pathname === "/dashboard/project-components" && navLink.path === "/dashboard/project-components" && styles.navLinkActive}
+                            ${location.pathname === "/dashboard/about-vena" && navLink.path === "/dashboard/about-vena" && styles.navLinkActive}
                         `}
                     >
                         {navLink.icon}

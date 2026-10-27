@@ -1,0 +1,18 @@
+@use "../globals.scss" as *;
+
+
+
+.homePage {
+
+    a {
+        color: $silver-white;
+        font-size: 1.2rem;
+        background-color: $dark-faded;
+        padding: 0.6rem;
+        border-radius: $border-rad-xxs;
+
+        &:hover {
+            outline: 1px solid $red-dark;
+        }
+    }
+}

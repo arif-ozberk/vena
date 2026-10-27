@@ -1,0 +1,91 @@
+@use "../globals.scss" as *;
+
+
+
+.recentDataApp {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    row-gap: 0.6rem;
+    
+    .recentDataTitle {
+        position: relative;
+        @include flex-space-between;
+
+        p {
+            font-size: 1rem;
+            font-weight: 400;
+
+            @media(max-width: 1024px) {
+                font-size: 0.9rem;
+            }
+        }
+        
+        .filterButton {
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: fill 0.2s ease;
+
+            &:hover {
+                fill: $red-dark;
+            }
+        }
+        
+        .filterPopup {
+            position: absolute;
+            top: 2rem;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.4rem;
+            padding: 0.4rem;
+            background-color: $gray-dark;
+            border-radius: $border-rad-xxs;
+            width: 10rem;
+            z-index: 10;
+
+            .popupTitle {
+                font-size: 0.8rem;
+                font-weight: 300;
+            }
+
+            .dataTypeRow {
+                display: flex;
+                column-gap: 0.4rem;
+            }
+
+            .calculationTypeRow {
+                display: flex;
+                column-gap: 0.4rem;
+            }
+
+            button {
+                flex: 1;
+                background-color: $dark-faded;
+                border: none;
+                border-radius: 0.2rem;
+                font-size: 0.8rem;
+                font-weight: 300;
+                padding: 0.2rem 0.4rem;
+                opacity: 0.6;
+                transition: opacity 0.2s ease;
+
+                &:hover {
+                    outline: 1px solid $red-dark;
+                    opacity: 1;
+                }
+            }
+
+            .buttonActive {
+                opacity: 1;
+                border: 1px solid $red-dark;
+            }
+        }
+    }
+
+    .chartContainer {
+        flex: 1;
+
+        
+    }
+}
