@@ -3,6 +3,9 @@ import React, { useState, useEffect, useContext, useCallback, useRef } from 'rea
 // Styles
 import styles from "../../sass/dashboardPage_styles/RecentDataApp.module.scss";
 
+// Components
+import Loader from '../shared_components/Loader';
+
 // React-Icons
 import { IoFilter } from "react-icons/io5";
 
@@ -297,7 +300,7 @@ const RecentDataApp = () => {
                     <div className={styles.noDataContainer}>
                         <p>No measurement history available.</p>
                     </div>
-                ) : <p>Loading...</p>}
+                    ) : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}><Loader /></div>}
             </div>
         </div>
     );

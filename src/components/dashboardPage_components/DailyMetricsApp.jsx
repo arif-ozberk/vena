@@ -3,6 +3,9 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 // Styles
 import styles from "../../sass/dashboardPage_styles/DailyMetricsApp.module.scss";
 
+// Components
+import Loader from '../shared_components/Loader';
+
 // Context & DB
 import { AuthContext } from '../../context/AuthContext';
 import vena_db from '../../config/supabaseClient';
@@ -143,7 +146,7 @@ const DailyMetricsApp = () => {
                 <div className={styles.noDataWrapper}>
                     <p className={styles.noDataText}>No measurements recorded today.</p>
                 </div>
-            ) : null}
+                ) : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}><Loader /></div>}
         </div>
     );
 };

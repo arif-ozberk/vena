@@ -7,6 +7,7 @@ import "../sass/globals.scss";
 // Components
 import Sidebar from '../components/shared_components/Sidebar';
 import MobileNavbar from '../components/shared_components/MobileNavbar';
+import Loader from '../components/shared_components/Loader';
 
 // Context
 import { AuthContext } from '../context/AuthContext';
@@ -35,7 +36,9 @@ const AuthWrapper = ({ children }) => {
 
 
     useEffect(() => {
-        authDB.getSession(setIsAuthenticated, setUserSession, setIsSessionLoading, setLoggedUserData);
+        setTimeout(() => {
+            authDB.getSession(setIsAuthenticated, setUserSession, setIsSessionLoading, setLoggedUserData);
+        }, 500);
 
         window.scrollTo(0, 0);
     }, [])
@@ -48,7 +51,7 @@ const AuthWrapper = ({ children }) => {
 
     if (isSessionLoading) return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height:"100vh" }}>
-            <h1>Loading...</h1>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}><Loader /></div>
             <Sidebar />
             <MobileNavbar />
         </div>
