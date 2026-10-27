@@ -10,9 +10,13 @@ import MobileNavbar from '../components/shared_components/MobileNavbar';
 
 // Context
 import { AuthContext } from '../context/AuthContext';
+import { UIContext } from '../context/UIContext';
 
 // Vena-DB
 import authDB from '../config/authDB';
+
+// Functions
+import { setTabName } from '../functions/SetTabName';
 
 
 const AuthWrapper = ({ children }) => {
@@ -27,12 +31,19 @@ const AuthWrapper = ({ children }) => {
         currentPage
     } = useContext(AuthContext);
 
+    const { setCurrentPage } = useContext(UIContext);
+
 
     useEffect(() => {
         authDB.getSession(setIsAuthenticated, setUserSession, setIsSessionLoading, setLoggedUserData);
 
         window.scrollTo(0, 0);
     }, [])
+    
+    
+    useEffect(() => {
+        setTabName(setCurrentPage);
+    }, []);
 
 
     if (isSessionLoading) return (

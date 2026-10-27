@@ -17,6 +17,7 @@ import AuthWrapper from '../wrappers/AuthWrapper';
 
 // Context
 import { AuthContext } from '../context/AuthContext';
+import { UIContext } from '../context/UIContext';
 
 // Vena-DB
 import authDB from '../config/authDB';
@@ -28,6 +29,9 @@ import toastifyOptions from '../mocks/toastifyOptions';
 // React-Icons
 import { IoNotificationsCircle } from "react-icons/io5";
 
+// Functions
+import { setTabName } from '../functions/SetTabName';
+
 
 const Dashboard = () => {
 
@@ -37,6 +41,13 @@ const Dashboard = () => {
         setIsAuthenticated,
         setIsSessionLoading
     } = useContext(AuthContext);
+
+    const { setCurrentPage } = useContext(UIContext);
+
+
+    useEffect(() => {
+        setTabName(setCurrentPage);
+    }, []);
 
     
 

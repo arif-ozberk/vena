@@ -13,6 +13,7 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { AuthContext } from '../../context/AuthContext';
 import vena_db from '../../config/supabaseClient';
 
+
 const RecentDataApp = () => {
     // Popup Ref
     const popupRef = useRef(null);
@@ -32,20 +33,20 @@ const RecentDataApp = () => {
     const [chartData, setChartData] = useState({ dates: [], values: [] });
     const [loading, setLoading] = useState(true);
 
-    // Format ISO string to 'Jun 17' format
+
+    // Format ISO string to 'Xxx NN' format
     const formatDateLabel = (isoDate) => {
         const date = new Date(isoDate);
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     };
 
-    // Fetch the last available (up to 7) days of records from Supabase
-    const fetchRecentRecords = useCallback(async () => {
+
+    const fetchRecentRecords = useCallback(async (isInitial = false) => {
         if (!userId) return;
 
         try {
-            setLoading(true);
+            if (isInitial) setLoading(true);
 
-            // Fetch the most recent days first (max 7 rows)
             const { data, error } = await vena_db
                 .from('pulse_oximeter')
                 .select('measurement_id, created_at, measurement_data')
@@ -56,7 +57,6 @@ const RecentDataApp = () => {
             if (error) throw error;
 
             if (data && data.length > 0) {
-                // Reverse to display chronologically from left to right on the chart
                 const chronologicalData = [...data].reverse();
                 setRawDaysData(chronologicalData);
             } else {
@@ -65,9 +65,10 @@ const RecentDataApp = () => {
         } catch (error) {
             console.error("Supabase: Error fetching recent records:", error.message);
         } finally {
-            setLoading(false);
+            if (isInitial) setLoading(false);
         }
     }, [userId]);
+
 
     // Recalculate chart metrics whenever raw data or active filter settings change
     useEffect(() => {
@@ -119,12 +120,13 @@ const RecentDataApp = () => {
         setChartData({ dates, values });
     }, [rawDaysData, selectedDataType, selectedCalculationType]);
 
-    // Initial fetch and custom event listener for immediate updates
-    useEffect(() => {
-        fetchRecentRecords();
 
+    useEffect(() => {
+        fetchRecentRecords(true);
+
+        // 5 second live measuring (silent visuals)
         const handleLiveUpdate = () => {
-            fetchRecentRecords();
+            fetchRecentRecords(false);
         };
 
         window.addEventListener('oximeter_data_updated', handleLiveUpdate);
@@ -134,7 +136,8 @@ const RecentDataApp = () => {
         };
     }, [fetchRecentRecords]);
 
-    // Calculate dynamic gap ratio to keep bar thickness completely constant regardless of day count
+
+    // Calculate dynamic gap ratio to keep bar thickness constant regardless of day count
     const barCount = chartData.dates.length;
     const dynamicCategoryGapRatio = Math.max(0.2, 1 - (barCount / 7) * 0.7);
 
@@ -233,13 +236,13 @@ const RecentDataApp = () => {
                         series={[
                             {
                                 data: chartData.values,
-                                color: '#ff3b30', // Vibrant bar color
-                                label: `${selectedDataType} - ${selectedCalculationType}`, // Enables "BPM" or "SpO2" inside hover tooltip
+                                color: '#ff3b30',
+                                label: `${selectedDataType} - ${selectedCalculationType}`,
                             },
                         ]}
                         margin={{ top: 15, bottom: 0, left: -10, right:10 }}
                         slotProps={{
-                            legend: { hidden: true }, // Hide default top legend
+                            legend: { hidden: true },
                             popper: {
                                 sx: {
                                     // Custom tooltip container styling
@@ -271,7 +274,7 @@ const RecentDataApp = () => {
                             // Axis lines styling
                             '& .MuiChartsAxis-line': {
                                 stroke: '#f3f4f6 !important',
-                                strokeWidth: 1,
+                                strokeWidth: 0.8,
                             },
                             // Tick marks styling
                             '& .MuiChartsAxis-tick': {
@@ -286,16 +289,15 @@ const RecentDataApp = () => {
                             // Rounded bar corners
                             '& .MuiBarElement-root': {
                                 rx: 4,
+                                transition: 'height 0.4s ease, y 0.4s ease',
                             },
                         }}
                     />
                 ) : !loading ? (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-                        <p style={{ color: '#9ca3af', fontSize: '0.85rem', fontWeight: 300 }}>
-                            No measurement history available.
-                        </p>
+                    <div className={styles.noDataContainer}>
+                        <p>No measurement history available.</p>
                     </div>
-                ) : null}
+                ) : <p>Loading...</p>}
             </div>
         </div>
     );

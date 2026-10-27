@@ -43,6 +43,7 @@
             border-radius: $border-rad-xxs;
             width: 10rem;
             z-index: 10;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
 
             .popupTitle {
                 font-size: 0.8rem;
@@ -85,7 +86,24 @@
 
     .chartContainer {
         flex: 1;
+    }
 
-        
+    .noDataContainer {
+        background-color: $gray-dark;
+        height: 100%;
+        @include flex-center;
+        border-radius: $border-rad-xs;
+        padding: 0.4rem;
+    
+        p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-break: auto;
+            text-align: center;
+    
+            @media(max-width: 1024px) {
+                font-size: 0.8rem;
+            }
+        }
     }
 }

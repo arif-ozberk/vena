@@ -44,6 +44,7 @@ const Sidebar = () => {
                             ${location.pathname === "/dashboard/project-report" && navLink.path === "/dashboard/project-report" && styles.navLinkActive}
                             ${location.pathname === "/dashboard/project-components" && navLink.path === "/dashboard/project-components" && styles.navLinkActive}
                             ${location.pathname === "/dashboard/about-vena" && navLink.path === "/dashboard/about-vena" && styles.navLinkActive}
+                            ${location.pathname === "/dashboard/calendar-app" && navLink.path === "/dashboard/calendar-app" && styles.navLinkActive}
                         `}
                     >
                         {navLink.icon}

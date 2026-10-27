@@ -11,6 +11,7 @@ import venaLogo from "../../assets/vena-logo.png";
 
 // Context
 import { AuthContext } from '../../context/AuthContext';
+import { UIContext } from '../../context/UIContext';
 
 // React-Icons
 import { IoEye, IoEyeOff } from 'react-icons/io5';
@@ -23,6 +24,9 @@ import authDB from '../../config/authDB';
 // Toastify
 import { toast } from 'react-toastify';
 import toastifyOptions from '../../mocks/toastifyOptions';
+
+// Functions
+import { setTabName } from '../../functions/SetTabName';
 
 
 const SignUpPage = () => {
@@ -38,6 +42,8 @@ const SignUpPage = () => {
         setLoggedUserData
     } = useContext(AuthContext);
 
+    const { setCurrentPage } = useContext(UIContext);
+
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
     const [message, setMessage] = useState("");
@@ -49,6 +55,11 @@ const SignUpPage = () => {
         authDB.getSession(setIsAuthenticated, setUserSession, setIsSessionLoading, setLoggedUserData);
 
         window.scrollTo(0, 0);
+    }, []);
+
+
+    useEffect(() => {
+        setTabName(setCurrentPage);
     }, []);
 
 

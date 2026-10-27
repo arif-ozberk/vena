@@ -10,13 +10,16 @@ export const UIContextProvider = ({ children }) => {
     const [isDarkModeOn, setIsDarkModeOn] = useState(true);
     const [languageSelection, setLanguageSelection] = useState("English");
 
+    const [currentPage, setCurrentPage] = useState("");
+
 
     return (
         <UIContext.Provider
             value={{
                 isNotificationsOn, setIsNotificationsOn,
                 isDarkModeOn, setIsDarkModeOn,
-                languageSelection, setLanguageSelection
+                languageSelection, setLanguageSelection,
+                currentPage, setCurrentPage
             }}
         >
             {children}

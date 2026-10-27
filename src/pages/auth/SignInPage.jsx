@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 // Context
 import { AuthContext } from '../../context/AuthContext';
+import { UIContext } from '../../context/UIContext';
 
 // Vena-DB
 import vena_db from "../../config/supabaseClient";
@@ -23,6 +24,9 @@ import toastifyOptions from '../../mocks/toastifyOptions';
 // React-Icons
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
+
+// Functions
+import { setTabName } from '../../functions/SetTabName';
 
 
 const SignInPage = () => {
@@ -38,6 +42,8 @@ const SignInPage = () => {
         setLoggedUserData
     } = useContext(AuthContext);
 
+    const { setCurrentPage } = useContext(UIContext);
+
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
     const [message, setMessage] = useState("");
@@ -49,6 +55,11 @@ const SignInPage = () => {
         authDB.getSession(setIsAuthenticated, setUserSession, setIsSessionLoading, setLoggedUserData);
 
         window.scrollTo(0, 0);
+    }, []);
+
+    
+    useEffect(() => {
+        setTabName(setCurrentPage);
     }, []);
 
 

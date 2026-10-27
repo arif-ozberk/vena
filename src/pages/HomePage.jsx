@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 // Styles
 import styles from "../sass/homePage_styles/HomePage.module.scss";
@@ -7,12 +7,18 @@ import styles from "../sass/homePage_styles/HomePage.module.scss";
 import { Link } from 'react-router-dom';
 
 // Context
+import { UIContext } from '../context/UIContext';
 
 // Vena-DB
 import authDB from '../config/authDB'; 
 
+// Functions
+import { setTabName } from '../functions/SetTabName';
+
 
 const HomePage = () => {
+
+    const { setCurrentPage } = useContext(UIContext);
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState(null);
@@ -22,6 +28,12 @@ const HomePage = () => {
     useEffect(() => {
         authDB.checkSession(setIsLoggedIn, setUsername, setIsLoading);
     }, []);
+
+
+    useEffect(() => {
+        setTabName(setCurrentPage);
+    }, []);
+
 
     return (
         <div className={`${styles.homePage} context-wrapper`}>
